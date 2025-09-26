@@ -1,0 +1,72 @@
+:root {
+  --background: rgb(50, 55, 59);
+
+  background-color: var(--background);
+  justify-content: center;
+  text-align: center;
+  color: rgb(255, 245, 221);
+  font-family: monospace;
+  font-size: 1.3em;
+}
+
+body {
+  margin: 0;
+}
+
+.titlebar {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  app-region: drag;
+  user-select: none;
+  background-color: transparent;
+}
+
+p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+button {
+  margin: 10px;
+  font-size: 1.3rem;
+  border: 0px solid black;
+  border-radius: 5px;
+  background-color: rgb(94, 98, 100);
+  color: rgb(255, 242, 217);
+}
+
+#userText {
+  color: green;
+}
+
+.textBoxes {
+  margin-top: 100px;
+  position: static;
+  overflow-x: hidden;
+}
+
+.keyboard {
+  bottom: 100px;
+  left: 150px;
+  bottom: 0px;
+}
+
+#highlight {
+  color: green;
+}
+
+#levelOption {
+  width: 200px;
+  height: 50px;
+  border-radius: 5%;
+  border: none;
+  background-color: var(--background);
+  color: rgb(255, 242, 217);
+  position: fixed;
+  left: 20px;
+  top: 60px;
+  font-size: 1.3rem;
+  text-align: center;
+}
