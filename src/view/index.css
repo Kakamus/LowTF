@@ -1,10 +1,11 @@
 :root {
-  --background: rgb(50, 55, 59);
+  --background: rgb(46, 47, 42);
+  --foreground: rgb(255, 236, 193);
 
   background-color: var(--background);
   justify-content: center;
   text-align: center;
-  color: rgb(255, 245, 221);
+  color: var(--foreground);
   font-family: monospace;
   font-size: 1.3em;
 }
@@ -34,7 +35,7 @@ button {
   border: 0px solid black;
   border-radius: 5px;
   background-color: rgb(94, 98, 100);
-  color: rgb(255, 242, 217);
+  color: var(--foreground);
 }
 
 #userText {
@@ -63,10 +64,24 @@ button {
   border-radius: 5%;
   border: none;
   background-color: var(--background);
-  color: rgb(255, 242, 217);
+  color: var(--foreground);
   position: fixed;
   left: 20px;
   top: 60px;
   font-size: 1.3rem;
   text-align: center;
+}
+
+#endScreen {
+  display: none;
+  padding: 20px;
+  width: 300px;
+  height: 150px;
+  border: 1px var(--foreground) solid;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 10;
 }
