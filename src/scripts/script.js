@@ -1,4 +1,7 @@
-const levelDisplay = document.getElementById('levelWindow');
+// --- Script for main logic --\\
+
+
+const level_display = document.getElementById('levelWindow');
 const root = document.querySelector(':root');
 const newLevelBtn = document.getElementById('addLevel');
 const userTextWindow = document.getElementById('userText');
@@ -16,66 +19,46 @@ const invalidChar = ['Alt', 'Control', 'Shift', 'CapsLock', 'Escape', 'Tab'];
 // --- Functions --- \\
 
 // --- Makes random level --- \\
-function fillLevelWindow(arr, window) {
-    let filledArr = []
-    
-    for (let i = 0; i < 50; i++){
-        filledArr += arr[Math.floor(Math.random() * arr.length)]
-        
-        // --- Adds spaces --- \\
-        if (i % 7 === 2){
-            filledArr += " "
-        }
-    }
-    window.textContent = filledArr
-    i = 0;
-    completed = '';
+function fill_level_window(arr, window) {
+    // call method from level class
 }
 
 // --- Updates displayed level --- \\
-function updateLevel(event, str) { 
+function update_level(event, str) { 
 
         completed.concat(completed += event.key);
         let remaining = str.slice(i + 1);
      
         if (str[i] == event.key) {
             levelDisplay.innerHTML = `<span style="color: green">${completed}</span>${remaining}`;
-            updateScore();
+            update_score();
         }
         else {
             levelDisplay.innerHTML = `<span style="color: red">${completed}</span>${remaining}`;
-            updateMistakes();
+            update_mistakes();
         }
        
 };
 
-function updateScore() {
-    score++;
-    document.getElementById('score').textContent = `Score: ${score}`;
+function update_score() {
+    // call method from score class
 }
 
-function updateMistakes () {
-    mistakes++;
-    document.getElementById('mistakes').textContent = `Mistakes: ${mistakes}`;
-}
-
-function endScreen (body) {
-    location.replace('endScreen.html');
-    document.getElementById('score').textContent += `${score}`;
-    document.getElementById('mistakes').textContent += `${mistakes}`;
-    return
+function update_mistakes () {
+    // call method from score class
 }
 
 // --- Main logic --- \\
 root.addEventListener('keydown', (event) => {
     // Level completed
-    if (i == levelDisplay.textContent.length - 1){
-        return endScreen(body);
+    if (i == level_display.textContent.length - 1){
+        // change endscreen display value
+        return 
     }
     
-    const fullLevel = levelDisplay.textContent;   
+    const full_level = level_display.textContent;   
     
-    updateLevel(event, fullLevel);
+    update_level(event, full_level);
     
     if(event.key == 'Backspace'){
         return i--;
@@ -83,6 +66,4 @@ root.addEventListener('keydown', (event) => {
     i++ 
 })
 
-fillLevelWindow(challengeSymbols, levelDisplay);
-
-
+fill_level_window(challengeSymbols, level_display);

@@ -3,4 +3,8 @@ class Level{
         this.characters = characters
         this.level_length = 50
     }
+
+    create_level(this){
+        
+    }
 }
