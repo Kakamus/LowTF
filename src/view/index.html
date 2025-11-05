@@ -8,7 +8,7 @@
     <script src="../scripts/script.js" defer></script>
   </head>
   <body>
-    <!-- Top bar so drag works -->
+    <!-- Title bar so drag works -->
     <div class="titlebar"></div>
     
     <!-- Level picking options -->
@@ -24,24 +24,14 @@
       <h4 id="mistakes">Mistakes: 0</h4>
     </div>
 
-    <!-- Pop up end screen -->
-    <div id="endScreen">
-      <h1>Results</h1>
-      <div >
-        <h4 id="time"></h4>
-        <h4 id="score">Score: 0</h4>
-        <h4 id="mistakes">Mistakes: 0</h4>
-      </div>
-    </div>
-
-    <!--  -->
+    <!-- The place where level is displayed !think of name  -->
     <div>
       <div class="textBoxes"> 
-        <p id="levelWindow"><span id="highlight"></span></p>
-        <p id="userText"></p>
+        <p id="levelTextDisplay"><span id="highlight"></span></p>
+        <p id="userTextDisplay"></p>
       </div>
 
-      <button id="addLevel" onclick="fillLevelWindow(challengeSymbols, levelDisplay)">Make new level</button>
+      <button id="makeNewLevelButton">Make new level</button>
     </div>
     <div class="keyboard">
     </div>

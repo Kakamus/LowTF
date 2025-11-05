@@ -1,44 +1,53 @@
 // --- Script for main logic --\\
 
-
-const level_display = document.getElementById('levelWindow');
+// --- DOM variables --- \\
+const levelTextDisplay = document.getElementById('levelTextDisplay');
 const root = document.querySelector(':root');
-const newLevelBtn = document.getElementById('addLevel');
-const userTextWindow = document.getElementById('userText');
+const userTextDisplay = document.getElementById('userTextDisplay');
 const body = document.querySelector('body');
-const highlight = document.getElementById('highlight');
-let levelSymbols = document.getElementById('levelOption');
 
+// --- Helping variables --- \\
 let i = 0;
-let challengeSymbols = ['s', 'a', 'd', 'f', 'j', 'k', 'l', ';'];
+let levelSymbols = ['s', 'a', 'd', 'f', 'j', 'k', 'l', ';', 'aa', 'ss', 'dd', 'ff', 'jj', 'kk', 'll'];
 let score = 0;
 let mistakes = 0;
-let completed = '';
+let completedLevel = '';
+let levelLenght = 20;
 const invalidChar = ['Alt', 'Control', 'Shift', 'CapsLock', 'Escape', 'Tab'];
+let remainingLevel = ''
+let temp = ''
 
 // --- Functions --- \\
 
-// --- Makes random level --- \\
-function fill_level_window(arr, window) {
-    // call method from level class
+// --- Generates random level --- \\
+function createLevel(arr, levelLenght) {
+    let temp = '';
+    for (let i = 0; i < levelLenght; i++){
+       temp = temp.concat(arr[1]) 
+    }
+    console.log('level: ' + temp)
+    return temp
 }
 
-// --- Updates displayed level --- \\
-function update_level(event, str) { 
+function check_state(level, char){
+    if (char == level){
+        return createCharacterSpan(char, 'correct')
+    }
+    else {
+        return createCharacterSpan(char, 'incorrect')
+    }
+}
 
-        completed.concat(completed += event.key);
-        let remaining = str.slice(i + 1);
-     
-        if (str[i] == event.key) {
-            levelDisplay.innerHTML = `<span style="color: green">${completed}</span>${remaining}`;
-            update_score();
-        }
-        else {
-            levelDisplay.innerHTML = `<span style="color: red">${completed}</span>${remaining}`;
-            update_mistakes();
-        }
-       
-};
+function createCharacterSpan(char, state){
+    switch (state){
+        case 'pending':
+            return `<span style='color: blue'>${char}</span>`
+        case 'correct':
+            return `<span style='color: green'>${char}</span>`
+        case 'incorrect':
+            return `<span style='color: red'>${char}</span>`
+    }
+}
 
 function update_score() {
     // call method from score class
@@ -49,21 +58,21 @@ function update_mistakes () {
 }
 
 // --- Main logic --- \\
+let level = createLevel(levelSymbols,  20)
+console.log(level)
+levelTextDisplay.textContent = level
+
 root.addEventListener('keydown', (event) => {
     // Level completed
-    if (i == level_display.textContent.length - 1){
-        // change endscreen display value
-        return 
+    if (i >= levelTextDisplay.textContent.length){
+        console.log('done')
+        return
     }
-    
-    const full_level = level_display.textContent;   
-    
-    update_level(event, full_level);
-    
-    if(event.key == 'Backspace'){
-        return i--;
+    else {
+        temp = temp.concat(check_state(level[i], event.key))
+        remainingLevel = level.slice(i + 1)
+        console.log(remainingLevel)
+        levelTextDisplay.innerHTML = `${temp}${remainingLevel}`
     }
     i++ 
 })
-
-fill_level_window(challengeSymbols, level_display);
