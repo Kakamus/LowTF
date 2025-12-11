@@ -1,3 +1,4 @@
-# LowTF
+# Ročníková práce
+Aplikace pro výuku psaní všemi deseti prsty
 
-Basic app for learning to write with all fingers
+Antonín Markl
